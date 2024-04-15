@@ -5,9 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./Root";
 import Home from "./Pages/Home/Home";
 import UpdateProfile from "./Pages/UpdateProfile/UpdateProfile";
-import Properties from "./Pages/Properties/Properties";
-import Property from "./Pages/Property/Property";
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/Login/Register";
 
 const router = createBrowserRouter([
   {
@@ -23,16 +22,12 @@ const router = createBrowserRouter([
         element:<UpdateProfile></UpdateProfile>
       },
       {
-        path: "/properties",
-        element:<Properties></Properties>
-      },
-      {
-        path: "/property",
-        element:<Property></Property>
-      },
-      {
         path: "/login",
         element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       },
     ]
   },

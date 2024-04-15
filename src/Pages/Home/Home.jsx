@@ -1,9 +1,12 @@
+import EstateSection from "../../Components/EstateSection/EstateSection";
+import Slider from "../../Components/Slider/Slider";
 
 
 const Home = () => {
     return (
         <div>
-           <h2>This is home</h2>
+           <Slider></Slider>
+           <EstateSection></EstateSection>
         </div>
     );
 };

@@ -43,7 +43,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div> 
-        <a className="flex items-center cursor-pointer text-2xl"> <img className='w-16' src={logo} alt="" />DreamDwelling</a>
+        <Link to='/' className="flex items-center cursor-pointer text-2xl"> <img className='w-16' src={logo} alt="" />DreamDwelling</Link>
       </div>
 
       <div className="navbar-end">
