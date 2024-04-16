@@ -21,5 +21,5 @@ const EstateSection = ({ data }) => {
 export default EstateSection;
 
 EstateSection.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.array
 };

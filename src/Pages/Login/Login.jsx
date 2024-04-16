@@ -1,11 +1,15 @@
-
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
 import SocialLogIn from "./SocialLogIn";
 
 const Login = () => {
-  const { signInUser} = useAuth();
+  const { signInUser } = useAuth();
+
+  // navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
 
   // react hook form
   const {
@@ -14,15 +18,14 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-// form submit handler
+  // form submit handler
   const onSubmit = (data) => {
     const { email, password } = data;
     signInUser(email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+      .then((result) => {
+        if (result.user) {
+          navigate(from);
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -30,8 +33,6 @@ const Login = () => {
         console.log(errorCode, errorMessage);
       });
   };
-
-
 
   return (
     <div className="mx-auto max-w-md  lg:w-1/4">
@@ -99,7 +100,7 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
         </div>
-              <SocialLogIn></SocialLogIn>
+        <SocialLogIn></SocialLogIn>
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
           Dont have an account?
           <Link

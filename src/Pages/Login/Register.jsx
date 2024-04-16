@@ -1,13 +1,16 @@
-
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
 
 const Register = () => {
   // use context
-  const { createUser } = useAuth()
-    console.log(createUser)
+  const { createUser } = useAuth();
+  // console.log(createUser)
 
+  // navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
 
   // react form hook
   const {
@@ -16,9 +19,15 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+
+  // register form submit handler
   const onSubmit = (data) => {
     const { email, password } = data;
-    createUser(email, password).then((result) => result);
+    createUser(email, password).then((result) => {
+      if (result.user) {
+        navigate(from);
+      }
+    });
   };
 
   //   console.log(watch("password")); // watch input value by passing the name of it
