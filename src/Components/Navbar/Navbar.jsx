@@ -44,9 +44,9 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex items-center cursor-pointer text-2xl">
-          {" "}
+         
           <img className="w-16" src={logo} alt="" />
-          DreamDwelling
+          <h2 className="font-bold text-3xl">Dream<span className="text-red-500">D</span>welling</h2>
         </Link>
       </div>
 

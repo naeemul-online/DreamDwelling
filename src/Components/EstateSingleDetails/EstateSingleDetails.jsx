@@ -4,16 +4,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 const EstateSingleDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
-//   console.log(details) 
 
-//   useEffect(() => {
-//     fetch('/data.json')
-//       .then(res => res.json())
-//       .then(data => {
-//         setDetails(data);
-//       })
-//       .catch(error => console.log("Error fetching data", error));
-//   }, []);
 
   // Ensure data is available before accessing its properties
   const Data = data ? data.find(item => item.id == id) : null;
@@ -22,7 +13,7 @@ const EstateSingleDetails = () => {
   
 
   return (
-    <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+    <div className="container max-w-6xl mx-auto space-y-6 sm:space-y-12 lg:py-12 lg:my-10">
 		<div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 items-center dark:bg-gray-50">
 			<img src={Image} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
 			<div className="p-6 space-y-2 lg:col-span-5">
