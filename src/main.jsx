@@ -9,6 +9,8 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
 import FirebaseProvider from "./FirebaseProvider/FirebaseProvider";
 import NotFound from "./PrivateRoute/NotFound";
+import EstateSingleDetails from "./Components/EstateSingleDetails/EstateSingleDetails";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=> fetch('data.json'),
+        loader: ()=> fetch('/data.json'),
 
+      },
+      {
+        path: "/estate-single-details/:id",
+        element:<PrivateRoute><EstateSingleDetails></EstateSingleDetails></PrivateRoute>,
+        loader: ()=> fetch('/data.json'),
       },
       {
         path: "/update-profile",

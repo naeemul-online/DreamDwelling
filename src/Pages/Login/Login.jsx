@@ -101,7 +101,7 @@ const Login = () => {
         </div>
               <SocialLogIn></SocialLogIn>
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
-          Don't have an account?
+          Dont have an account?
           <Link
             to="/register"
             rel="noopener noreferrer"

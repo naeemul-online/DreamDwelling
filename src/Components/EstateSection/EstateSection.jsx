@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 import EstateSingleCard from "../EstateSingleCard/EstateSingleCard";
 
 const EstateSection = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div className="text-center my-8">
@@ -17,3 +19,7 @@ const EstateSection = ({ data }) => {
 };
 
 export default EstateSection;
+
+EstateSection.propTypes = {
+  data: PropTypes.object
+};
