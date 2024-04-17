@@ -44,9 +44,10 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex items-center cursor-pointer text-2xl">
-         
           <img className="w-16" src={logo} alt="" />
-          <h2 className="font-bold text-3xl">Dream<span className="text-red-500">D</span>welling</h2>
+          <h2 className="font-bold text-3xl">
+            Dream<span className="text-red-500">D</span>welling
+          </h2>
         </Link>
       </div>
 
@@ -56,32 +57,29 @@ const Navbar = () => {
         </div>
 
         {user ? (
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  src={
-                    user?.photoURL ||
-                    "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"
-                  }
-                />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <button className="btn btn-sm  btn-ghost">
-                  {user?.displayName || "user name not found"}
+          <div className="">
+            <div className=" flex items-center">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <button
+                  className="w-10  rounded-full tooltip tooltip-bottom"
+                  data-tip={user?.displayName || "Anonymous"}
+                >
+                  <img
+                    className=" rounded-full"
+                    src={
+                      user?.photoURL ||
+                      "https://lh3.googleusercontent.com/a/ACg8ocLgMoPuzTbu3w6-hU9tKW5_DGwio0pcsH0vNr5NcJZ9MglZFM4=s288-c-no"
+                    }
+                  />
                 </button>
-              </li>
-              <li>
-                <button onClick={logOut} className="btn btn-sm  btn-ghost">
-                  Logout
-                </button>
-              </li>
-            </ul>
+              </label>
+
+              <button onClick={logOut} className="btn btn-sm  btn-ghost">
+                Logout
+              </button>
+            </div>
+
+            {/* {user?.displayName || "user name not found"} */}
           </div>
         ) : (
           <Link to="/login">

@@ -2,9 +2,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
 import SocialLogIn from "./SocialLogIn";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 const Login = () => {
-  const { signInUser } = useAuth();
+
+  // provider custom hook
+  const { signInUser} = useAuth();
+
+  // useState
+  const [loginError, setLoginError] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+  const [success, setSuccess] = useState();
+
+  // alert("form usestate0", loginError);
 
   // navigation system
   const navigate = useNavigate();
@@ -21,16 +33,23 @@ const Login = () => {
   // form submit handler
   const onSubmit = (data) => {
     const { email, password } = data;
+
+    // reset error
+    setLoginError('');
+    
     signInUser(email, password)
       .then((result) => {
+        setSuccess("You are login successfully");
+        alert("You are login successfully")
+
         if (result.user) {
           navigate(from);
         }
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setLoginError(errorMessage)
+        // alert(errorMessage);
       });
   };
 
@@ -57,31 +76,24 @@ const Login = () => {
                 <span className="text-red-500">This field is required</span>
               )}
             </div>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm">
-                  Password
+            <div className="form-control relative">
+                <label className="label">
+                  <span className="label-text">Password</span>
                 </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline dark:text-gray-600"
-                >
-                  Forgot password?
-                </a>
+                <input
+                  type= {showPassword ? "text" : "password"}
+                  placeholder="password"
+                  className="input input-bordered"
+                  {...register("password", { required: true })}
+                />
+                {/* Show password icon */}
+                <span className="absolute right-2 mt-14" onClick={() => setShowPassword(!showPassword)}>{ !showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye> }</span>
+                
+                {/* errors will return when field validation fails  */}
+                {errors.password && (
+                  <span className="text-red-500">This field is required</span>
+                )}
               </div>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md   focus:dark:border-violet-600"
-                {...register("password", { required: true })}
-              />
-              {errors.password && (
-                <span className="text-red-500">This field is required</span>
-              )}
-            </div>
           </div>
           <button
             type="submit"
@@ -90,6 +102,11 @@ const Login = () => {
             Login
           </button>
         </form>
+        {
+          loginError && (
+            <span className="text-red-500">{loginError}</span>
+          )
+        }
 
         {/* Social Login */}
 

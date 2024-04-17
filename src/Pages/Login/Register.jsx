@@ -1,16 +1,31 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
+import { useState } from "react";
+
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   // use context
   const { createUser } = useAuth();
-  // console.log(createUser)
+
+
+
+  const [errorRegister, setErrorRegister] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+
 
   // navigation system
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state || "/";
+
+
+  const notify = () => toast("Wow so easy!");
+
 
   // react form hook
   const {
@@ -19,15 +34,25 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-
   // register form submit handler
   const onSubmit = (data) => {
     const { email, password } = data;
-    createUser(email, password).then((result) => {
-      if (result.user) {
-        navigate(from);
-      }
-    });
+
+   if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+      setErrorRegister("Password Must have an Uppercase and Lowercase Letter and at least 6 character");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        alert("User created successfully");       
+        if (result.user) {
+          navigate(from);
+        }
+      })
+      .catch((error) => {
+        setErrorRegister(error.message);
+      });
   };
 
   //   console.log(watch("password")); // watch input value by passing the name of it
@@ -58,6 +83,7 @@ const Register = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
               </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -68,11 +94,13 @@ const Register = () => {
                   className="input input-bordered"
                   {...register("email", { required: true })}
                 />
+                
                 {/* errors will return when field validation fails  */}
                 {errors.email && (
                   <span className="text-red-500">This field is required</span>
                 )}
               </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Image Url</span>
@@ -81,24 +109,37 @@ const Register = () => {
                   type="text"
                   placeholder="image url"
                   className="input input-bordered"
-                  {...register("photo")}
+                  {...register("photo", { required: true })}
                 />
+                {/* errors will return when field validation fails  */}
+                {errors.photo && (
+                  <span className="text-red-500">This field is required</span>
+                )}
               </div>
-              <div className="form-control">
+              <ToastContainer />
+
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type= {showPassword ? "text" : "password"}
                   placeholder="password"
                   className="input input-bordered"
                   {...register("password", { required: true })}
                 />
+                {/* Show password icon */}
+                <span className="absolute right-0 mt-14" onClick={() => setShowPassword(!showPassword)}>{ !showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye> }</span>
+                
                 {/* errors will return when field validation fails  */}
                 {errors.password && (
                   <span className="text-red-500">This field is required</span>
                 )}
               </div>
+              {errorRegister && (
+                <span className="text-red-500">{errorRegister}</span>
+              )}
+
               <div className="form-control mt-6 p-0">
                 <button className="btn btn-neutral">Register</button>
               </div>
@@ -110,6 +151,7 @@ const Register = () => {
               </label>
             </div>
           </form>
+          
         </div>
       </div>
     </>
