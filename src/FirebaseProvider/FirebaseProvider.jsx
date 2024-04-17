@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import PropTypes from 'prop-types';
 
 // created context
 export const AuthContext = createContext(null);
@@ -25,10 +26,10 @@ const FirebaseProvider = ({ children }) => {
 
   // use state
   const [user, setUser] = useState(null);
-  console.log(user)
+  // console.log(user)
  
   const [loading, setLoading] =useState(true);
-  console.log(loading)
+  // console.log(loading)
 
   // create user method
   const createUser = (email, password) => {
@@ -98,3 +99,8 @@ const updateUserProfile = (name, image, password, email) => {
 };
 
 export default FirebaseProvider;
+
+FirebaseProvider.propTypes = {
+  children: PropTypes.node
+};
+
