@@ -12,6 +12,7 @@ import NotFound from "./PrivateRoute/NotFound";
 import EstateSingleDetails from "./Components/EstateSingleDetails/EstateSingleDetails";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import { HelmetProvider } from "react-helmet-async";
+import News from "./Pages/News/News";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,15 @@ const router = createBrowserRouter([
             <UpdateProfile></UpdateProfile>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/news",
+        element: (
+          <PrivateRoute>
+            <News></News>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/login",

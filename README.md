@@ -9,6 +9,12 @@ A9 Dream Dwellings is a web application designed to showcase dream properties an
 - Filter properties based on various criteria such as location, price range, amenities, etc.
 - User-friendly interface for easy navigation and exploration of properties.
 - Responsive design for seamless viewing on different devices.
+- 
+## Packages
+- React Hook form,
+- DaisyUI Slider
+- Props Types Validation 
+
 
 ## Demo
 You can access the live demo of A9 Dream Dwellings [here](https://a9-dreamdwellings-react.web.app/).
