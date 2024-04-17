@@ -4,6 +4,7 @@ import useAuth from "../../Hook/useAuth";
 import SocialLogIn from "./SocialLogIn";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
   // useState
   const [loginError, setLoginError] = useState();
   const [showPassword, setShowPassword] = useState(false);
-  const [success, setSuccess] = useState();
+  // const [success, setSuccess] = useState();
 
   // alert("form usestate0", loginError);
 
@@ -39,7 +40,7 @@ const Login = () => {
     
     signInUser(email, password)
       .then((result) => {
-        setSuccess("You are login successfully");
+        // setSuccess("You are login successfully");
         alert("You are login successfully")
 
         if (result.user) {
@@ -55,6 +56,9 @@ const Login = () => {
 
   return (
     <div className="mx-auto max-w-md  lg:w-1/4">
+       <Helmet>
+        <title>Login </title>
+      </Helmet>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>

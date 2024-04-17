@@ -1,16 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
+import { Helmet } from "react-helmet-async";
+
 
 const UpdateProfile = () => {
+  
   // use context
-  const { createUser, updateUserProfile, user } = useAuth();
+  const { updateUserProfile, user } = useAuth();
   // console.log(createUser)
-  console.log(user);
+  // console.log(user);
 
   // navigation system
-  const navigate = useNavigate();
-  const from =  "/";
+  // const navigate = useNavigate();
+  // const from =  "/";
 
   // react form hook
   const {
@@ -25,12 +28,20 @@ const UpdateProfile = () => {
     const { email, password , image, fullName} = data;
    
 
-    createUser(email, password).then(
-        updateUserProfile(fullName, image)
-        .then(()=> {
-            navigate(from)
-        })
-    );
+    // createUser(email, password).then(
+    //     updateUserProfile(fullName, image)
+    //     .then(()=> {
+    //         // navigate(from)
+    //     })
+    // );
+    
+      updateUserProfile(fullName, image, email, password )
+      .then(()=> {
+          // navigate(from)
+      });
+
+
+    
   };
 
 
@@ -38,6 +49,9 @@ const UpdateProfile = () => {
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+      <title>Update - Profile</title>
+      </Helmet>
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
             <h1 className="text-3xl font-bold text-center mb-4">Update Profile</h1>
@@ -111,7 +125,7 @@ const UpdateProfile = () => {
                 )}
               </div>
               <div className="form-control mt-6 p-0">
-                <button className="btn btn-neutral">Update and Register</button>
+                <button className="btn btn-neutral">Update</button>
               </div>
               <label className="label">
                 Have an account?{" "}

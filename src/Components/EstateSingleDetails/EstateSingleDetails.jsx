@@ -1,7 +1,10 @@
 // import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
 
 const EstateSingleDetails = () => {
+
+
   const { id } = useParams();
   const data = useLoaderData();
 
@@ -14,6 +17,9 @@ const EstateSingleDetails = () => {
 
   return (
     <div className="container max-w-6xl mx-auto space-y-6 sm:space-y-12 lg:py-12 lg:my-10">
+       <Helmet>
+        <title>Estate - Single Card Details</title>
+      </Helmet>
 		<div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 items-center dark:bg-gray-50">
 			<img src={Image} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
 			<div className="p-6 space-y-2 lg:col-span-5">

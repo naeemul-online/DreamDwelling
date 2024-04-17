@@ -4,9 +4,8 @@ import useAuth from "../../Hook/useAuth";
 import { useState } from "react";
 
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   // use context
@@ -24,7 +23,6 @@ const Register = () => {
   const from = location?.state || "/";
 
 
-  const notify = () => toast("Wow so easy!");
 
 
   // react form hook
@@ -60,6 +58,9 @@ const Register = () => {
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
+      <Helmet>
+        <title>Register - DreamDwellings </title>
+      </Helmet>
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
@@ -116,7 +117,7 @@ const Register = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
               </div>
-              <ToastContainer />
+              
 
               <div className="form-control relative">
                 <label className="label">
@@ -129,7 +130,7 @@ const Register = () => {
                   {...register("password", { required: true })}
                 />
                 {/* Show password icon */}
-                <span className="absolute right-0 mt-14" onClick={() => setShowPassword(!showPassword)}>{ !showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye> }</span>
+                <span className="absolute right-2 mt-14" onClick={() => setShowPassword(!showPassword)}>{ !showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye> }</span>
                 
                 {/* errors will return when field validation fails  */}
                 {errors.password && (
