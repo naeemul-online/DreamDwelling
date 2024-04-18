@@ -7,7 +7,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   // console.log(user, logOut);
   const navLinks = (
-    < >
+    <>
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -47,8 +47,15 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex items-center cursor-pointer text-2xl">
-          <img className="w-16" src={logo} alt="" />
-          <h2 className="font-bold text-3xl">
+          <img
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
+            className="w-16"
+            src={logo}
+            alt=""
+          />
+          <h2 className="font-bold text-3xl hidden md:block">
             Dream<span className="text-red-500">D</span>welling
           </h2>
         </Link>
@@ -77,7 +84,10 @@ const Navbar = () => {
                 </button>
               </label>
 
-              <button onClick={logOut} className="btn btn-sm  text-xl btn-ghost">
+              <button
+                onClick={logOut}
+                className="btn btn-sm  text-xl btn-ghost"
+              >
                 Logout
               </button>
             </div>
