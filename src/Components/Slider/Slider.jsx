@@ -1,37 +1,53 @@
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const Slider = () => {
-    return (
-        <div className="carousel my-4 w-full">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img src="https://imgbb.host/images/DdVHS.jpeg" className="w-full h-[400px]" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" className="btn btn-circle">❮</a> 
-      <a href="#slide2" className="btn btn-circle">❯</a>
+  return (
+    <div className="">
+      <Swiper
+        // install Swiper modules
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        onSwiper={(swiper) => swiper}
+        onSlideChange={() => console.log("slide change")}
+      >
+        <SwiperSlide className="bg-red-400">
+         <div className="bg-red-600"> <img className="object-fit w-full lg:h-[600px]"
+            src="https://imgbb.host/images/GOAPk.jpeg"
+            alt=""
+          /></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://imgbb.host/images/GO4xW.jpeg"
+            alt=""
+            className="object-fit w-full lg:h-[600px]"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://imgbb.host/images/GO9VZ.jpeg"
+            alt=""
+            className="object-fit w-full lg:h-[600px]"
+          />
+        </SwiperSlide>
+        
+     
+      </Swiper>
     </div>
-  </div> 
-  <div id="slide2" className="carousel-item relative w-full">
-    <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide1" className="btn btn-circle">❮</a> 
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide3" className="carousel-item relative w-full">
-    <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide2" className="btn btn-circle">❮</a> 
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide4" className="carousel-item relative w-full">
-    <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide3" className="btn btn-circle">❮</a> 
-      <a href="#slide1" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-</div>
-    );
+  );
 };
 
 export default Slider;
