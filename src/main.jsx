@@ -13,6 +13,8 @@ import EstateSingleDetails from "./Components/EstateSingleDetails/EstateSingleDe
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import { HelmetProvider } from "react-helmet-async";
 import News from "./Pages/News/News";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -70,5 +72,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </HelmetProvider>
     </FirebaseProvider>
+    <ToastContainer />
   </React.StrictMode>
+  
 );

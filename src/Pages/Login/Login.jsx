@@ -5,6 +5,7 @@ import SocialLogIn from "./SocialLogIn";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
@@ -41,7 +42,8 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         // setSuccess("You are login successfully");
-        alert("You are login successfully")
+        // alert("You are login successfully")
+        toast.success("You are login successfully");
 
         if (result.user) {
           navigate(from);

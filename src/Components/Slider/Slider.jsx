@@ -24,27 +24,32 @@ const Slider = () => {
         onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide className="bg-red-400">
-         <div className="bg-red-600"> <img className="object-fit w-full lg:h-[600px]"
-            src="https://imgbb.host/images/GOAPk.jpeg"
-            alt=""
-          /></div>
+          <div>
+            <img
+              className="object-fit w-full lg:h-[600px]"
+              src="https://imgbb.host/images/GOAPk.jpeg"
+              alt=""
+            />
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://imgbb.host/images/GO4xW.jpeg"
-            alt=""
-            className="object-fit w-full lg:h-[600px]"
-          />
+          <div>
+            <img
+              src="https://imgbb.host/images/GO4xW.jpeg"
+              alt=""
+              className="object-fit w-full lg:h-[600px]"
+            />
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://imgbb.host/images/GO9VZ.jpeg"
-            alt=""
-            className="object-fit w-full lg:h-[600px]"
-          />
+          <div>
+            <img
+              src="https://imgbb.host/images/GO9VZ.jpeg"
+              alt=""
+              className="object-fit w-full lg:h-[600px]"
+            />
+          </div>
         </SwiperSlide>
-        
-     
       </Swiper>
     </div>
   );
