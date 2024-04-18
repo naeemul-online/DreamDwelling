@@ -44,7 +44,6 @@ const Login = () => {
         // setSuccess("You are login successfully");
         // alert("You are login successfully")
         toast.success("You are login successfully");
-
         if (result.user) {
           navigate(from);
         }
