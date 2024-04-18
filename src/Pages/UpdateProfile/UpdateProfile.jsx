@@ -2,6 +2,7 @@ import { Link} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 
 const UpdateProfile = () => {
@@ -25,19 +26,12 @@ const UpdateProfile = () => {
 
   // register form submit handler
   const onSubmit = (data) => {
-    const { email, password , image, fullName} = data;
+    const { password, email , image, fullName} = data;
    
 
-    // createUser(email, password).then(
-    //     updateUserProfile(fullName, image)
-    //     .then(()=> {
-    //         // navigate(from)
-    //     })
-    // );
-    
       updateUserProfile(fullName, image, email, password )
       .then(()=> {
-          // navigate(from)
+          toast.success('Your information successfully updated')
       });
 
 
@@ -54,16 +48,18 @@ const UpdateProfile = () => {
       </Helmet>
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl font-bold text-center mb-4">Update Profile</h1>
+            
             <div className="text-center">
-            <h2><strong>Name:</strong> {user?.displayName || "name not found"}</h2>
-            <h2><strong>Email:</strong> {user?.email || "name not found"}</h2>
-            <h2><strong>Profile Photo:</strong></h2>
+            <h2 className="text-3xl font-bold"><strong className="text-3xl text-red-500">Hi,</strong> {user?.displayName || "Anonymous"}</h2>
             <div className="flex justify-center w-full ">
-                <img  className="rounded-full" src={user?.photoURL || "name not found"}alt="" />                
+                <img  className="rounded-full" src={user?.photoURL || "Profile photo not found" }alt="" />                
             </div>
+            <h2><strong>Profile</strong></h2>
+            <h2><strong>Email:</strong> {user?.email || ""}</h2>
+            
             </div>
           </div>
+          <h1 className="text-xl font-bold text-center mb-4">Update your profile Profile</h1>
           <form
             className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
             onSubmit={handleSubmit(onSubmit)}
@@ -125,7 +121,7 @@ const UpdateProfile = () => {
                 )}
               </div>
               <div className="form-control mt-6 p-0">
-                <button className="btn btn-neutral">Update</button>
+                <button className="btn btn-neutral">Save Changes</button>
               </div>
               <label className="label">
                 Have an account?{" "}

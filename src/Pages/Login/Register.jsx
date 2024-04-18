@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const Register = () => {
   // use context
@@ -43,7 +44,8 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        alert("User created successfully");       
+        // alert("User created successfully");
+        toast.success("Account created successfully");       
         if (result.user) {
           navigate(from);
         }

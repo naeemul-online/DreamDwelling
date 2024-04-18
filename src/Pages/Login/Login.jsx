@@ -18,7 +18,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   // const [success, setSuccess] = useState();
 
-  // alert("form usestate0", loginError);
+  // alert("form use state", loginError);
 
   // navigation system
   const navigate = useNavigate();
@@ -52,6 +52,7 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message;
         setLoginError(errorMessage)
+        toast.error(loginError);
         // alert(errorMessage);
       });
   };

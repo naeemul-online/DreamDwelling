@@ -11,6 +11,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import PropTypes from 'prop-types';
+import { toast } from "react-toastify";
 
 // created context
 export const AuthContext = createContext(null);
@@ -41,8 +42,9 @@ const updateUserProfile = (name, image, password, email) => {
    return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: image,
-        password: password,
-        email: email
+        email: email,
+        password: password
+        
       })
       
 }
@@ -56,11 +58,13 @@ const updateUserProfile = (name, image, password, email) => {
   // sign in with google popUp
   const googleLogin = () => {
     setLoading(true)
+    toast.success('You are login successfully!')
     return signInWithPopup(auth, googleProvider);
   };
 
   // sign in with gitHub popUp
   const gitHubLogin = () => {
+    toast.success('You are login successfully!')
     return signInWithPopup(auth, gitHubProvider);
   };
 

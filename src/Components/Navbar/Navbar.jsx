@@ -3,6 +3,7 @@ import logo from "../../../public/logo.png";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 
+
 const Navbar = () => {
   const { user, logOut } = useAuth();
   // console.log(user, logOut);
@@ -90,6 +91,7 @@ const Navbar = () => {
               >
                 Logout
               </button>
+              
             </div>
 
             {/* {user?.displayName || "user name not found"} */}

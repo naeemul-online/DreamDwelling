@@ -11,8 +11,9 @@ A9 Dream Dwellings is a web application designed to showcase dream properties an
 - Responsive design for seamless viewing on different devices.
 - 
 ## Packages
+- Swiper slider
 - React Hook form,
-- DaisyUI Slider
+- AOS Package,
 - Props Types Validation 
 
 
